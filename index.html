@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="src/index.css"> -->
-  <title>Task-Manager &mdash; Manage Tasks!</title>
-</head>
-<body>
-  <div class="navbar bg-base-100">
-    <div class="flex-1">
-      <a class="btn btn-ghost text-xl">daisyUI</a>
-    </div>
-  </div>
-  
-  <h1>Hi am avinash</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="src/index.css"> -->
+    <title>Task-Manager &mdash; Manage Tasks!</title>
 
-  <script src="src/main.js"></script>
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+  </head>
+  <body class="font-figtree">
+    <div class="navbar bg-base-100">
+      <div class="flex-1">
+        <a class="btn btn-ghost text-xl">daisyUI</a>
+      </div>
+      <div class="flex-none">
+        <button class="btn btn-square btn-ghost">
+          <i class="ti ti-brand-github"></i>
+        </button>
+      </div>
+    </div>
+
+    <main class="container h-screen flex justify-center">
+      <div class="card bg-base-100 sm:w-89 md:w-96 w-96 shadow-xl">
+        <figure>
+          <img src="public/images.jpeg" />
+        </figure>
+        <div class="card-body">
+          <h1 class="card-title">Task-Manager &mdash; Manage Tasks!</h1>
+          <form>
+            <input
+              type="text"
+              placeholder="Type here"
+              class="input input-bordered w-full max-w-xs"
+            />
+          </form>
+
+          <div class="form-control" data-task-container>
+            <label class="label cursor-pointer">
+              <span class="label-text">Remember me</span>
+              <input type="checkbox" checked="checked" class="checkbox" />
+            </label>
+
+            <label class="label cursor-pointer">
+              <span class="label-text">Remember me</span>
+              <input type="checkbox" checked="checked" class="checkbox" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer footer-center bg-base-300 text-base-content p-4">
+      <aside>
+        <p>
+          Copyright © {new Date().getFullYear()} - All right reserved by ACME
+    
+        </p>
+      </aside>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
