@@ -34,15 +34,21 @@
         </figure>
         <div class="card-body">
           <h1 class="card-title">Task-Manager &mdash; Manage Tasks!</h1>
-          <form>
+          <form data-form>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder="Add task"
               class="input input-bordered w-full max-w-xs"
+              data-user-input
             />
           </form>
 
-          <div class="form-control" data-task-container>
+          <div class="form-control flex flex-col gap-1" data-task-container>
+            <label class="label cursor-pointer">
+              <span class="label-text">Remember me</span>
+              <input type="checkbox" unchecked="checked" class="checkbox" />
+            </label>
+
             <label class="label cursor-pointer">
               <span class="label-text">Remember me</span>
               <input type="checkbox" checked="checked" class="checkbox" />
@@ -51,6 +57,11 @@
             <label class="label cursor-pointer">
               <span class="label-text">Remember me</span>
               <input type="checkbox" checked="checked" class="checkbox" />
+            </label>
+
+            <label class="label cursor-pointer">
+              <span class="label-text">Remember me</span>
+              <input type="checkbox" unchecked="checked" class="checkbox" />
             </label>
           </div>
         </div>
