@@ -1,19 +1,32 @@
 import "./index.css"
 import SingleTask from "./components/SingleTask";
-import { titleCase } from "./utils";
+import { titleCase, randomID } from "./utils";
 
 const formEl = document.querySelector("[data-form]");
 const inputEl = document.querySelector("[data-user-input]");
 const taskContainerEl = document.querySelector("[data-task-container]");
 
-const tasks =[];
+let state =[];
+
+function toggleCompleted(id){
+
+ state = state.map((task) => {
+    if(task.id === id){
+      return{...task,isCompleted : !task.isCompleted};
+    }
+    return task;
+  });
+  console.log(state);
+  
+   
+}
 
 function renderTask(){
     taskContainerEl.innerHTML ="";
 
     const frag = document.createDocumentFragment();
-    tasks.forEach((task) => {
-    frag.appendChild(SingleTask(task.text,task.isCompleted));
+    state.forEach((task) => {
+    frag.appendChild(SingleTask(task.text,task.isCompleted,task.id));
   });
   taskContainerEl.appendChild(frag);
 }
@@ -26,13 +39,23 @@ formEl.addEventListener("submit",(e) =>{
 const newTask ={
     text:titleCase(inputEl.value),
     isCompleted: false,
-    id:tasks.length,
+    id:randomID(),
+        
     }
-    tasks.unshift(newTask);
+    state.unshift(newTask);
     renderTask();
-    console.log(tasks);
+    console.log(state);
     inputEl.value="";
    });
 
-const showYearEl = document.querySelector(".show-year");
+
+taskContainerEl.addEventListener("click",(e)=>{
+     if(e.target.tagName === "INPUT"){
+      toggleCompleted(e.target.id);
+      state.sort((a,b) => a.isCompleted - b.isCompleted);
+      renderTask();
+      }
+  });
+
+  const showYearEl = document.querySelector(".show-year");
 showYearEl.textContent = new Date().getFullYear();

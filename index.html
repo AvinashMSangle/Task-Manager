@@ -27,8 +27,8 @@
       </div>
     </div>
 
-    <main class="container h-screen flex justify-center">
-      <div class="card bg-base-100 sm:w-89 md:w-96 w-96 shadow-xl">
+    <main class="min-h-screen flex justify-center items-center glass">
+      <div class="card bg-slate-100 w-64 sm:w-80 shadow-2xl my-5">
         <figure>
           <img src="public/images.jpeg" />
         </figure>
@@ -44,15 +44,15 @@
           </form>
 
           <div class="form-control flex flex-col gap-1" data-task-container>
-            <label class="label cursor-pointer">
+            <!-- <label class="label cursor-pointer">
               <span class="label-text">Remember me</span>
               <input type="checkbox" unchecked="checked" class="checkbox checkbox-primary" />
             </label>
 
-            <label class="label cursor-pointer">
+            <label class="label cursor-pointer bg-slate-200 rounded p-2">
               <span class="label-text">Remember me</span>
               <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
-            </label>
+            </label> -->
 
           </div>
         </div>
@@ -61,11 +61,13 @@
     <footer class="footer footer-center bg-base-300 text-base-content p-4">
       <aside>
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by ACME
-    
+          Copyright &copy; <span class="show-year">2030</span> - All right
+          reserved by
+          <a href="https://github.com/gliese-sketch">Gliese Sketch</a>
         </p>
       </aside>
     </footer>
+
 
     <script type="module" src="/src/main.js"></script>
   </body>
