@@ -4,7 +4,7 @@ This To-Do List project is a simple yet effective application designed to help u
 
 # features
 
--Add and delete tasks
+-Add and delete tasks <br>
 -Mark tasks as complete
 
 # Preview
