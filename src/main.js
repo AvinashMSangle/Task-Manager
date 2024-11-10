@@ -1,61 +1,102 @@
-import "./index.css"
+import "./index.css";
+import localforage from "localforage";
+import { sortBy as sort } from "lodash";
 import SingleTask from "./components/SingleTask";
 import { titleCase, randomID } from "./utils";
+import { formEl, inputEl, taskContainerEl,buttonEl } from "./domSelection";
 
-const formEl = document.querySelector("[data-form]");
-const inputEl = document.querySelector("[data-user-input]");
-const taskContainerEl = document.querySelector("[data-task-container]");
+// MARK: State
+let state = [];
 
-let state =[];
-
-function toggleCompleted(id){
-
- state = state.map((task) => {
-    if(task.id === id){
-      return{...task,isCompleted : !task.isCompleted};
-    }
-    return task;
-  });
-  console.log(state);
-  
-   
+localforage.setDriver(localforage.LOCALSTORAGE);
+function updateLocal() {
+  localforage.setItem("tasks", state);
 }
 
-function renderTask(){
-    taskContainerEl.innerHTML ="";
+localforage.getItem("tasks").then((data) => {
+  state = data || [];
+  renderTasks();
+});
 
-    const frag = document.createDocumentFragment();
-    state.forEach((task) => {
-    frag.appendChild(SingleTask(task.text,task.isCompleted,task.id));
+// function clearTasks() {
+//   state.length = 0;
+//   updateLocal();
+//   renderTasks();
+//   inputEl.value = "";
+// }
+
+function toggleCompleted(id) {
+  state = state.map((task) => {
+    if (id === task.id) {
+      return { ...task, isCompleted: !task.isCompleted };
+    }
+
+    return task;
   });
+
+  updateLocal();
+}
+
+// MARK: Render
+function renderTasks() {
+  taskContainerEl.innerHTML = "";
+
+  const frag = document.createDocumentFragment();
+  state.forEach((task) => {
+    frag.appendChild(SingleTask(task.text, task.isCompleted, task.id));
+  });
+
   taskContainerEl.appendChild(frag);
 }
 
-formEl.addEventListener("submit",(e) =>{
-    e.preventDefault();
-    if(!inputEl.value)return; 
-    
-   
-const newTask ={
-    text:titleCase(inputEl.value),
+// MARK: Listeners
+// On new task add
+formEl.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent refresh
+  if (!inputEl.value) return; // Gaurd Clause
+
+  if (inputEl.value === ":clearall") return clearTasks();
+
+  //  Creating new task
+  const newTask = {
+    text: titleCase(inputEl.value),
     isCompleted: false,
-    id:randomID(),
-        
-    }
-    state.unshift(newTask);
-    renderTask();
-    console.log(state);
-    inputEl.value="";
-   });
+    id: randomID(),
+  };
 
+  //  Adding
+  state.unshift(newTask);
 
-taskContainerEl.addEventListener("click",(e)=>{
-     if(e.target.tagName === "INPUT"){
-      toggleCompleted(e.target.id);
-      state.sort((a,b) => a.isCompleted - b.isCompleted);
-      renderTask();
-      }
-  });
+  // localforage.setItem("tasks", state);
+  updateLocal();
 
-  const showYearEl = document.querySelector(".show-year");
+  renderTasks();
+
+  //  Clearing input value
+  inputEl.value = "";
+});
+
+// On task toggle
+taskContainerEl.addEventListener("click", (e) => {
+  if (e.target.tagName === "INPUT") {
+    toggleCompleted(e.target.id); // Change the state
+    state = sort(state, ["isCompleted"]); // Sort on completed
+    updateLocal();
+    renderTasks();
+  }
+});
+
+// Render the current year
+const showYearEl = document.querySelector(".show-year");
 showYearEl.textContent = new Date().getFullYear();
+
+function clearTask(){
+  state.length=0;
+  localforage.setItem("tasks",state)
+  renderTasks();
+  inputEl.value=""
+}
+buttonEl.addEventListener("click",()=>{
+  clearTask()
+})
+

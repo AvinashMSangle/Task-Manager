@@ -1,12 +1,14 @@
+// short-uuid, uuid
 import shortUUID from "short-uuid";
+import startCase from "lodash/startCase";
+import lowerCase from "lodash/lowerCase";
 
-export function titleCase(str){
-    return str
-    .trim()
-    .split(" ")
-    .map((w) => w[0].toUpperCase() + w.slice(1).toLowerCase() )
+console.log(startCase("hey there how are you"));
+
+export function titleCase(str) {
+  return startCase(lowerCase(str));
 }
 
 export function randomID() {
-    return shortUUID.generate();
+  return shortUUID.generate();
 }

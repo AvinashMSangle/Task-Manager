@@ -1,74 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="cupcake">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="src/index.css"> -->
     <title>Task-Manager &mdash; Manage Tasks!</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+ <!-- Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link
+   href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+   rel="stylesheet"
+ />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
-  </head>
-  <body class="font-figtree">
-    <div class="navbar bg-base-100">
-      <div class="flex-1">
-        <a class="btn btn-ghost text-xl">daisyUI</a>
-      </div>
-      <div class="flex-none">
-        <button class="btn btn-square btn-ghost">
-          <i class="ti ti-brand-github"></i>
-        </button>
-      </div>
+ <!-- Tabler Icons -->
+ <link
+   rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+ />
+</head>
+<body class="font-figtree">
+  <!-- 
+    MARK: Navbar
+  -->
+  <div class="navbar bg-base-100">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl">Task-Manager</a>
     </div>
+    <div class="flex-none">
+      <a
+        class="btn btn-square btn-ghost"
+        href="https://github.com/AvinashMSangle/Task-Manager"
+        target="_blank"
+      >
+        <i class="ti ti-brand-github text-xl"></i>
+      </a>
+    </div>
+  </div>
 
-    <main class="min-h-screen flex justify-center items-center glass">
-      <div class="card bg-slate-100 w-64 sm:w-80 shadow-2xl my-5">
-        <figure>
-          <img src="public/images.jpeg" />
-        </figure>
-        <div class="card-body">
-          <h1 class="card-title">Task-Manager &mdash; Manage Tasks!</h1>
-          <form data-form>
-            <input
-              type="text"
-              placeholder="Add task"
-              class="input input-bordered w-full max-w-xs"
-              data-user-input
-            />
-          </form>
+  <!-- 
+    MARK: Main
+  -->
+  <main class="min-h-screen flex justify-center items-center glass">
+    <div class="card bg-slate-100 w-64 sm:w-80 shadow-2xl my-5">
+      <figure>
+        <img src="public/task.jpeg" alt="Pattern" class="w-full h-52 object-cover" />
+      </figure>
+      <div class="card-body">
+        <h1 class="card-title mb-2">Taskey &mdash; Organize yourself!</h1>
 
-          <div class="form-control flex flex-col gap-1" data-task-container>
-            <!-- <label class="label cursor-pointer">
-              <span class="label-text">Remember me</span>
-              <input type="checkbox" unchecked="checked" class="checkbox checkbox-primary" />
-            </label>
+        <!-- Form -->
+        <form data-form>
+          <input
+            type="text"
+            placeholder="Add task or :clearall"
+            class="input input-bordered w-full max-w-xs"
+            data-user-input
+          />
+        </form>
+        <div class="flex justify-center">
+          <button class="btn btn-active btn-ghost w-24 text-base">Clear</button>
+            </div>
 
-            <label class="label cursor-pointer bg-slate-200 rounded p-2">
-              <span class="label-text">Remember me</span>
-              <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
-            </label> -->
-
-          </div>
+        <!-- Task Container -->
+        <div class="form-control flex flex-col gap-1" data-task-container>
+          <!-- Tasks Go Here -->
         </div>
       </div>
-    </main>
-    <footer class="footer footer-center bg-base-300 text-base-content p-4">
-      <aside>
-        <p>
-          Copyright &copy; <span class="show-year">2030</span> - All right
-          reserved by
-          <a href="https://github.com/gliese-sketch">Gliese Sketch</a>
-        </p>
-      </aside>
-    </footer>
+    </div>
+  </main>
 
+  <!-- 
+    MARK: Footer
+  -->
+  <footer class="footer footer-center bg-base-300 text-base-content p-4">
+    <aside>
+      <p>
+        Copyright &copy; <span class="show-year">2030</span> - All right
+        reserved by
+        <a href="https://github.com/AvinashMSangle">AvinashMSangle</a>
+      </p>
+    </aside>
+  </footer>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  <!-- Scripts -->
+  <script type="module" src="src/main.js"></script>
+</body>
 </html>
